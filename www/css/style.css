@@ -1,0 +1,81 @@
+.card-login    { background-image: url('../img/bg2.jpg'); overflow: hidden; background-size: auto; } 
+
+ .lists { margin-top: 100px; margin-left: 20px; margin-right: 20px; padding-bottom:70%; overflow: hidden;}
+ .cards { margin-top: 100px; margin-left: 20px; margin-right: 20px; }
+ .screen { background-image: url('../img/bg2.jpg');  margin-top: 0px;  background-size: auto; }
+ 
+ .item {
+   box-shadow: none;
+   background: rgba(255,255,255, 0.5);
+   border-radius: 0px;
+  }
+  
+
+ input { background: rgba(100,100,100, 0.5);}
+ header{text-decoration: bold; text-align: center;}
+ /* button { color: #000; } */
+ .button-manual { margin-left: 20%;  margin-top: 50px;}
+ .button-check { margin-top: 50px; margin-bottom: 100px;}
+ .nfc {  margin-top: 20px; margin-bottom: 20px;}
+
+ input::-moz-placeholder {
+    color: #000!important;
+   }
+ 
+   input:-moz-placeholder {
+    color: #000!important;
+   }
+ 
+   *::-webkit-input-placeholder {
+    color: #000!important;
+   }
+ 
+   *:-ms-input-placeholder {
+    color: #000!important;
+   }
+ 
+   *:-moz-placeholder {
+    color: #000 !important;
+   }
+ a { color :#000; margin-top: 10px; margin-bottom: 10px;}
+ 
+ 
+ 
+ 
+ dt {
+     float: left;;
+     font-weight: bold;
+     margin-right: 0.25em;
+ }
+ 
+ dt:after
+ {
+     content:" ";
+ }
+ 
+ dd {
+     font-weight: bold;
+     margin-bottom:0.25em;
+ }
+ ds {align-items: center; margin-bottom: 0.25em; font-size: 25px; color:#000; font-weight: bold;}
+ 
+ /* .card-img { margin-top:5%}; */
+ .image{ align-items: center;}
+  .notverify { width: 200px; height: 200px; margin-top: 30px;   }
+  .verify { width: 200px; height: 200px; }
+ 
+ .center {
+     text-align: center;
+    }
+ .left { text-align: left; padding-left:15px; padding-top:10px;}
+ .image {
+     float:right; position: static; padding: true; margin-right: 10px;
+ }
+ 
+  .input-label { padding-left: 30px;} 
+  
+ 
+ 
+ /* .button { margin-left: 30px; padding-left: 30px; padding-right:30px; margin-top: 30px; } */
+ /* #button-one { margin-top: 50px; margin-bottom: 20px;}
+ .buttonn { margin-left: 40px; padding-left: 30px; padding-right:30px; margin-top: 30px; margin-bottom: 30px;}

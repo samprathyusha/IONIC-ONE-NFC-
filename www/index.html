@@ -1,0 +1,346 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no, width=device-width">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="js/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-app="ionicNFC" ng-controller="MainController">
+
+    <ion-content>
+
+<form name="LoginForm" novalidate>
+        <div ng-if="!login">
+           
+                <div class="card-login">
+                  
+                        <div class=lists>
+
+                            <div class="item">
+                                <header> LOGIN FORM </header>
+                            </div>
+
+                            <div class=item>
+                                <label class="item item-input">
+                                    <input type="text" placeholder="Phone Number" ng-model="phonenumber" ng-minlength="10" required>
+
+                                </label>
+                            </div>
+
+                            <div class=item>
+                                <label class="item item-input">
+                                    <input type="password" placeholder="Password" ng-model="password" ng-minlength="4" required>
+                                </label>
+                            </div>
+                            
+                            <div class="item">
+                                <button class="button button-positive button-block" ng-disabled="LoginForm.$invalid" ng-click="viewing(phonenumber,password)"> LOGIN </button>
+                                <a ng-click="screenchange()">
+                                    <center> Don't You have an account ? </center>
+                                </a>
+                            </div>
+                           
+                        </div>
+                </div>
+        </div>
+
+    </form>
+    <form name="SignupForm">
+        <div ng-if="store">
+            <div class="signup">
+              
+                    <div class="card-login">
+                     
+                            <div class=lists>
+
+                                <div class="item">
+                                    <header> SIGNUP FORM </header>
+                                </div>
+
+                                <div class=item>
+                                    <label class="item item-input">
+                                        <input type="text" placeholder=" User Name" ng-model="username" ng-minlength="6" required>
+
+
+                                    </label>
+                                </div>
+
+                                <div class=item>
+                                    <label class="item item-input">
+                                        <input type="text" placeholder=" Branch Name" ng-model="branchname" ng-minlength="6" required>
+                                    </label>
+                                </div>
+
+                                <div class=item>
+                                    <label class="item item-input">
+                                        <input type="text" placeholder="Phone Number" ng-model="phonenumber" ng-minlength="10" required>
+                                    </label>
+                                </div>
+
+                                <div class=item>
+                                    <label class="item item-input">
+                                        <input type="password" placeholder="Password" ng-model="password" ng-minlength="4" required>
+                                    </label>
+                                </div>
+
+                                <div class="item">
+                                    <button class="button button-positive button-block" ng-disabled="SignupForm.$invalid" ng-click="register(username,branchname,phonenumber,password)"> SIGNUP </button>
+                                    <a ng-click="loginscreen()">
+                                        <center> Already Have an account ?
+                                            <center>
+                                    </a>
+                                </div>
+
+                            </div>
+                        
+                    </div>
+              
+            </div>
+        </div>
+
+    </form>
+
+       
+
+        <div ng-if="dataentry">
+            <div ng-if="!dataforce">
+                <div ng-if="moving">
+
+                    <form>
+                        <div class="card-login">
+
+                            <div class="item item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" ng-model="barcode"> </label>
+                                <button class="button button-small button-outline  button-dark" ng-click="scanBarcode()">
+                                    SCAN BARCODE
+                                </button>
+                            </div>
+
+                            <div class="item item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" ng-model="nfc">
+                                </label>
+                                <button class="button button-small button-outline button-dark" ng-click="diversion()">
+                                    SCAN NFC  TAG
+                                </button>
+                            </div>
+
+                            <div class="item">
+                                <label class="item-input item">
+                                    <input type="text" ng-model="uid" placeholder="U ID">
+                                </label>
+                            </div>
+
+                            <div class="item">
+                                <label class="item-input item">
+                                    <input type="text" ng-model="productid" placeholder="PRODUCT ID">
+                                </label>
+
+                            </div>
+                            <div class="item">
+                                <label class="item-input item">
+                                    <input type="text" ng-model="trackingid" placeholder="TRACKING ID">
+                                </label>
+
+                            </div>
+                            <div class="item">
+                                <label class="item-input item">
+                                    <input type="text" ng-model="dealerid" placeholder="DEALER ID">
+                                </label>
+
+                            </div>
+                            <div class="item">
+                                <label class="item-input item">
+                                    <input type="text" ng-model="retailerid" placeholder="RETAILER ID">
+                                </label>
+
+                            </div>
+                            <div class="item">
+                                <label class="item-input item">
+                                    <input type="text" ng-model="compositeid" placeholder="COMPOSITE ID">
+                                </label>
+
+                            </div>
+                            <div class="item">
+                                <label class="item-input item">
+                                    <input type="text" ng-model="stamp" placeholder="STAMP">
+                                </label>
+                            </div>
+
+
+
+                            <div class="item">
+                                <button class="button button-positive button-block" id="submit" ng-click="submitForm(barcode,nfc,uid,productid,trackingid,dealerid,retailerid,compositeid,stamp)">
+                                    SUBMIT </button>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div ng-if="dataforce">
+                <div ng-if="!tag.id">
+                  
+                                <div align="center">
+                                        <img class="nfc" src="img/nfc.gif">
+                                        <ds> SCAN A TAG </ds>
+                                    </div> 
+                        
+                    
+                </div>
+                <div ng-if="tag.id">
+                    <dl>
+                        <dd>{{ tag.id | bytesToHexString }}</dd>
+                    </dl>
+                    <div class="card" ng-repeat="record in tag.ndefMessage">
+                        <dl>
+                            <dt ng-init="divert(record,tag.id )"></dt>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+               
+                   
+    
+                               
+    
+                           
+              
+           
+
+
+        <div ng-if="login">
+        
+            <div ng-if="!store">
+                <div n-if="code">
+                    <div ng-if="!moving">
+
+                        <div ng-if="!tag.id">
+                            <div align="center">
+                                <img class="nfc" src="img/nfc.gif">
+                                <ds> SCAN NFC TAG </ds>
+                            </div>
+                            <button class="button  button-dark button-outline  button-manual" ng-click="moveScreen()"> ENTER DATA MANUALLY </button>
+                        </div>
+
+
+                        <div ng-repeat="record in tag.ndefMessage">
+                            <dl>
+                                <dt ng-init="checkstatus(record,tag.id)"></dt>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    
+                       
+    </ion-content>                   
+                     
+                                <div ng-if="checked" class="center screen">
+                                    <div ng-if="ok">
+                                        <img ng-src="img/verified.png" class="verify">    
+    
+                                        <dd class="left">RECORD ID : </dd>
+                                        <p class="left">{{d1}}
+                                            <img class="image" src="img/verified.png" width="25" height="25"> </p>
+                                        <dd class="left">Tamper ID:</dd>
+                                        <p class="left"> {{d2}}
+                                            <img class="image" src="img/verified.png" width="25" height="25"> </p>
+                                        <dd class="left">BLOCKCHAIN RECORD:</dd>
+                                        <p class="left"> {{d4}}
+                                            <img class="image" src="img/verified.png" width="25" height="25"> </p>
+                                        <dd class="left"> DETAILS </dd>
+                                        <div class=" item-text-wrap">
+                                            <p class="left"> {{d3}} </p>
+                                            <p class="left">VALID PRODUCT </p>
+                                        </div>
+    
+                                        <button class="button button-block button-positive " ng-click="reset()"> CHECK NEXT</button>
+                                    </div>
+    
+    
+                                    <div ng-if="!ok">
+                                        <img ng-src="img/nv.png" class="notverify"> 
+    
+                                        <div ng-if="valid">
+                                            <dd class="left">RECORD ID : </dd>
+                                            <p class="left">{{d1}}
+                                                <img class="image" src="img/verified.png" width="25" height="25"> </p>
+                                        </div>
+                                        <div ng-if="!valid">
+                                            <dd class="left">RECORD ID : </dd>
+                                            <p class="left">{{d1}}
+                                                <img class="image" src="img/not verified.png" width="25" height="25"> </p>
+                                        </div>
+                                        <div ng-if="validtamper">
+                                            <dd class="left">Tamper ID:</dd>
+                                            <p class="left"> {{d2}}
+                                                <img class="image" src="img/verified.png" width="25" height="25"> </p>
+                                        </div>
+                                        <div ng-if="!validtamper">
+                                            <dd class="left">Tamper ID:</dd>
+                                            <p class="left"> {{d2}}
+                                                <img class="image" src="img/not verified.png" width="25" height="25"> </p>
+                                        </div>
+                                        <div ng-if="!blockchain">
+                                            <dd class="left">BLOCKCHAIN RECORD:</dd>
+                                            <p class="left"> {{read}}
+                                                <img class="image" src="img/not verified.png" width="25" height="25"> </p>
+                                        </div>
+                                        <div ng-if="blockchain">
+                                            <dd class="left">BLOCKCHAIN RECORD:</dd>
+                                            <p class="left"> {{result}}
+                                                <img class="image" src="img/verified.png" width="25" height="25"> </p>
+                                        </div>
+                                        <dd class="left"> DETAILS </dd>
+                                        <div class=" item-text-wrap">
+                                            <p class="left"> {{d3}} </p>
+                                            <div ng-if="valid">
+                                                <p class="left">PRODUCT HAS BEEN TAMPERED</p>
+                                            </div>
+                                            <div ng-if="!valid">
+                                                <p class="left">UNAUTHORISIED PRODUCT</p>
+                                            </div>
+                                        </div>
+    
+    
+                                        <button class="button button-dark button-outline center button-check" ng-click="reset()"> CHECK NEXT </button>
+    
+                                    </div>
+                                </div>
+                      
+
+
+                  
+
+      
+
+
+
+
+
+
+    
+
+</body>
+
+</html>
