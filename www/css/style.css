@@ -62,7 +62,7 @@
  /* .card-img { margin-top:5%}; */
  .image{ align-items: center;}
   .notverify { width: 200px; height: 200px; margin-top: 30px;   }
-  .verify { width: 200px; height: 200px; }
+  .verify { width: 200px; height: 200px; margin-top: 30px;  }
  
  .center {
      text-align: center;

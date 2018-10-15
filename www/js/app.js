@@ -112,7 +112,7 @@ var app=angular.module('ionicNFC', ['ionic', 'nfcFilters','ngCordova'])
                // alert(DataToSent);
                 //alert(den);
                 
-            $http.post('http://192.168.0.142:8090/api/me',DataToSent).then(function(response) {
+            $http.post('http://34.208.159.94:8081/api/me',DataToSent).then(function(response) {
               //  alert(response.status);
                 if(response.status='productdatainserted'){
                    // alert('the data found');
@@ -267,7 +267,7 @@ $scope.reset=function(){
               validAddress:address1
             }
          // alert(DataToSent);  
-      $http.post('http://192.168.0.142:8090/api/me',DataToSent).then(function(response) {
+      $http.post('http://34.208.159.94:8081/api/me',DataToSent).then(function(response) {
         //  alert(response.status);
           if(response.status='productdatainserted'){
              // alert('the data found'); 
@@ -316,7 +316,7 @@ $scope.reset=function(){
         }
     }
       // alert(Data);
-$http.post('http://192.168.0.142:8090/api/newscan',Data).then(function(response){
+$http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response){
     var output=response.data;
     alert(output.message);
     var seen=output.message;
@@ -452,7 +452,7 @@ $http.post('http://192.168.0.142:8090/api/newscan',Data).then(function(response)
         return {
             registerUser(username,branchname,phonenumber,password){
               //  alert('comb'+username,branchname,phonenumber,password);
-                return $http.get('http://192.168.0.142:8090/api/register/' + 
+                return $http.get('http://34.208.159.94:8081/api/register/' + 
                 username,branchname,phonenumber,password).then(function(response) {
                 return response.data;
              }, function(error) {
@@ -471,7 +471,7 @@ $http.post('http://192.168.0.142:8090/api/newscan',Data).then(function(response)
         return {
             loginUser(phonenumber,password){
                // alert('send'+phonenumber,password);
-                return $http.get('http://192.168.0.142:8090/api/login/' + 
+                return $http.get('http://34.208.159.94:8081/api/login/' + 
                 phonenumber,password).then(function(response) {
                     
                 return response.data;
@@ -492,7 +492,7 @@ $http.post('http://192.168.0.142:8090/api/newscan',Data).then(function(response)
               /*  return $http.get('http://192.168.0.142:8090/api/manu/' + 
                 record).then(function(response) {
                 return response.data;*/
-               return $http.post('http://192.168.0.142:8090/api/manu', 
+               return $http.post('http://34.208.159.94:8081/api/manu', 
                record).then(function(response) {
                   // alert('data'+record);
                return response.data;
@@ -513,7 +513,7 @@ $http.post('http://192.168.0.142:8090/api/newscan',Data).then(function(response)
         var tag = {};
         return {
             checkValid(record){
-               return $http.post('http://192.168.0.142:8090/api/testing', 
+               return $http.post('http://34.208.159.94:8081/api/testing', 
                record).then(function(response) {
                return response.data;
 

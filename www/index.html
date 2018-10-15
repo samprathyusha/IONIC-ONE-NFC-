@@ -52,8 +52,10 @@
         </div>
 
     </form>
-    <form name="SignupForm">
+
+    
         <div ng-if="store">
+                <form name="SignupForm">
             <div class="signup">
               
                     <div class="card-login">
@@ -107,7 +109,7 @@
 
     </form>
 
-       
+    <form name="denter">
 
         <div ng-if="dataentry">
             <div ng-if="!dataforce">
@@ -135,50 +137,50 @@
 
                             <div class="item">
                                 <label class="item-input item">
-                                    <input type="text" ng-model="uid" placeholder="U ID">
+                                    <input type="text" ng-model="uid" placeholder="U ID" required>
                                 </label>
                             </div>
 
                             <div class="item">
                                 <label class="item-input item">
-                                    <input type="text" ng-model="productid" placeholder="PRODUCT ID">
+                                    <input type="text" ng-model="productid" placeholder="PRODUCT ID" required>
                                 </label>
 
                             </div>
                             <div class="item">
                                 <label class="item-input item">
-                                    <input type="text" ng-model="trackingid" placeholder="TRACKING ID">
+                                    <input type="text" ng-model="trackingid" placeholder="TRACKING ID" required>
                                 </label>
 
                             </div>
                             <div class="item">
                                 <label class="item-input item">
-                                    <input type="text" ng-model="dealerid" placeholder="DEALER ID">
+                                    <input type="text" ng-model="dealerid" placeholder="DEALER ID" required>
                                 </label>
 
                             </div>
                             <div class="item">
                                 <label class="item-input item">
-                                    <input type="text" ng-model="retailerid" placeholder="RETAILER ID">
+                                    <input type="text" ng-model="retailerid" placeholder="RETAILER ID" required>
                                 </label>
 
                             </div>
                             <div class="item">
                                 <label class="item-input item">
-                                    <input type="text" ng-model="compositeid" placeholder="COMPOSITE ID">
+                                    <input type="text" ng-model="compositeid" placeholder="COMPOSITE ID" required>
                                 </label>
 
                             </div>
                             <div class="item">
                                 <label class="item-input item">
-                                    <input type="text" ng-model="stamp" placeholder="STAMP">
+                                    <input type="text" ng-model="stamp" placeholder="STAMP" required>
                                 </label>
                             </div>
 
 
 
                             <div class="item">
-                                <button class="button button-positive button-block" id="submit" ng-click="submitForm(barcode,nfc,uid,productid,trackingid,dealerid,retailerid,compositeid,stamp)">
+                                <button class="button button-positive button-block" id="submit" ng-disabled="denter.$invalid" ng-click="submitForm(barcode,nfc,uid,productid,trackingid,dealerid,retailerid,compositeid,stamp)">
                                     SUBMIT </button>
                             </div>
 
@@ -214,7 +216,7 @@
             </div>
         </div>
 
-       
+    </form>
                
                    
     
@@ -257,7 +259,7 @@
                      
                                 <div ng-if="checked" class="center screen">
                                     <div ng-if="ok">
-                                        <img ng-src="img/verified.png" class="verify">    
+                                        <img ng-src="img/verify.png" class="verify">    
     
                                         <dd class="left">RECORD ID : </dd>
                                         <p class="left">{{d1}}
@@ -279,7 +281,7 @@
     
     
                                     <div ng-if="!ok">
-                                        <img ng-src="img/nv.png" class="notverify"> 
+                                        <img ng-src="img/not verify.png" class="notverify"> 
     
                                         <div ng-if="valid">
                                             <dd class="left">RECORD ID : </dd>
