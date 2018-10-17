@@ -90,53 +90,10 @@ var app=angular.module('ionicNFC', ['ionic', 'nfcFilters','ngCordova'])
               }
 
    
-              $scope.submitForm = function(barcode,nfc,uid,productid,trackingid,dealerid,retailerid,compositeid,stamp){
-                  alert(barcode+","+nfc+","+uid+","+productid+","+trackingid+","+dealerid+","+retailerid+","+compositeid+","+stamp);
-                  var address1=window.localStorage.getItem("validAddress");
-                  //alert(address1);
-                  var DataToSent={
-                      barcode:barcode,
-                    data:nfc,
-                    uid:uid,
-                    productid:productid,
-                    trackingid:trackingid,
-                    dealerid:dealerid,
-                    retailerid:retailerid,
-                    compositeid:compositeid,
-                    stamp:stamp,
-                    validAddress:address1,
-                    onscan:'onscan no change in tamper'
+        
 
-                  }
-                 // var den=JSON.stringify(DataToSent);
-               // alert(DataToSent);
-                //alert(den);
                 
-            $http.post('http://34.208.159.94:8081/api/me',DataToSent).then(function(response) {
-              //  alert(response.status);
-                if(response.status='productdatainserted'){
-                   // alert('the data found');
-                    
-                    
-                    
-                    $scope.next=true;
-                    $scope.login=true;
-                    $scope.store=false;
-                    $scope.code=true;
-                    $scope.tagid='';
-                    $scope.moving=false;
-                    $scope.barcode='';
-                    $scope.nfc='';
-                    $scope.uid='';
-                    
-                
-    
-                }
-                // Do any magic you need
-                  }, function(errResponse) {
-                      alert(errResponse);
-                  });   
-            }
+            
           $scope.diversion=function(){
                 $scope.dataforce=true;
                 $scope.tagid='';
@@ -228,7 +185,7 @@ $scope.reset=function(){
             var send=z1+'&'+z2;
            // alert(send);
             LoginService.loginUser(send).then(function (status2){
-               // alert(status2.status);
+                alert(status2.status);
                // alert(status2.validAddress);
                 //alert(status2.invalidAddress);
                 //alert(status2.rejectAddress);
@@ -264,12 +221,16 @@ $scope.reset=function(){
               retailerid:retailerid,
                compositeid:compositeid,
               stamp:stamp,
-              validAddress:address1
+              validAddress:address1,
+              onscan:'onscan no change in tamper'
             }
          // alert(DataToSent);  
       $http.post('http://34.208.159.94:8081/api/me',DataToSent).then(function(response) {
-        //  alert(response.status);
-          if(response.status='productdatainserted'){
+          //alert('data to sent');
+         // alert(JSON.stringify(response.data));
+           var output1= response.data;
+          alert(output1.mgs);
+          if(output1.mgs=='productdatainserted'){
              // alert('the data found'); 
               $scope.next=true;
               $scope.login=true;
@@ -279,7 +240,22 @@ $scope.reset=function(){
               $scope.moving=false;
               $scope.barcode='';
               $scope.nfc='';
-              $scope.uid='';}
+              $scope.uid='';
+            }
+              else if(output1.mgs=='productexists'){
+                  alert('product already exists');
+
+                  
+                  $scope.next=true;
+                  $scope.login=true;
+                  $scope.store=false;
+                  $scope.code=true;
+                  $scope.tagid='';
+                  $scope.moving=false;
+                  $scope.barcode='';
+                  $scope.nfc='';
+                  $scope.uid='';
+              }
             }, function(errResponse) {
                 alert(errResponse);
             });
@@ -330,17 +306,19 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                     $scope.d3=string3;
                     $scope.d4='blockain record found';
                 }
-                else if(seen = 'assetnotfoundinyouraddress'){
+                else if(output.message = 'assetnotfoundinyouraddress'){
+              
+                    alert('asset not in your address');
                     testnotok();
-                    $scope.status = 'notok';
+
                     $scope.valid=true;
-                    $scope.validtamper=true;
-                    $scope.blockchain=false;
-                    $scope.read='blockchain record not found'
-                    $scope.tagid='';
-                    $scope.d1=string1;
-                    $scope.d2=string2;
-                    $scope.d3=string3;
+                    $scope.validtamper=false;
+                     $scope.tagid='';
+                     $scope.blockchain=true;
+                     $scope.result='blockchain record found';
+                     $scope.d1=string1;
+                     $scope.d2=string2;
+                     $scope.d3=string3;
 
                 }
                 else if(output.message=='blockchainrecordnotfound') {
@@ -405,11 +383,7 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                          $scope.d2=string2;
                          $scope.d3=string3;
                         }
-                        else {
-                           
-
-
-                        }
+                        
                             
                             
                         

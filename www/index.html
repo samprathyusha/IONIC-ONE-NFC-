@@ -108,6 +108,16 @@
         </div>
 
     </form>
+    <form>
+        <div ng-if="notinaddress">
+            <div>
+            
+            <div>
+        <button class="button button-dark button-outline center button-check " ng-click="reset()"> CHECK NEXT</button>
+    </div>
+    </div>
+</div>
+    </form>
 
     <form name="denter">
 
@@ -276,7 +286,7 @@
                                             <p class="left">VALID PRODUCT </p>
                                         </div>
     
-                                        <button class="button button-block button-positive " ng-click="reset()"> CHECK NEXT</button>
+                                        <button class="button button-dark button-outline center button-check " ng-click="reset()"> CHECK NEXT</button>
                                     </div>
     
     
