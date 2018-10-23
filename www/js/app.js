@@ -138,7 +138,7 @@ testnotok=function(){
     $scope.ok=false;
     $scope.test=true;
 }
-$scope.reset=function(){
+$scope.resett=function(){
     $scope.tag.id=false;
     $scope.checked=false;
     $scope.status='';
@@ -229,7 +229,7 @@ $scope.reset=function(){
           //alert('data to sent');
          // alert(JSON.stringify(response.data));
            var output1= response.data;
-          alert(output1.mgs);
+         // alert(output1.mgs);
           if(output1.mgs=='productdatainserted'){
              // alert('the data found'); 
               $scope.next=true;
@@ -243,18 +243,19 @@ $scope.reset=function(){
               $scope.uid='';
             }
               else if(output1.mgs=='productexists'){
-                  alert('product already exists');
-
-                  
+                  alert('ENTERED PRODUCT ALREADY EXISTS');
+                  alert('ENTERED PRODUCT IS ALREADY HAVING A BLOCKCHAIN RECORD');
                   $scope.next=true;
-                  $scope.login=true;
-                  $scope.store=false;
-                  $scope.code=true;
-                  $scope.tagid='';
-                  $scope.moving=false;
-                  $scope.barcode='';
-                  $scope.nfc='';
-                  $scope.uid='';
+              $scope.login=true;
+              $scope.store=false;
+              $scope.code=true;
+              $scope.tagid='';
+              $scope.moving=false;
+              $scope.barcode='';
+              $scope.nfc='';
+              $scope.uid='';
+                
+                  
               }
             }, function(errResponse) {
                 alert(errResponse);
@@ -304,7 +305,7 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                     $scope.d1=string1;
                     $scope.d2=string2;
                     $scope.d3=string3;
-                    $scope.d4='blockain record found';
+                    $scope.d4='Blockain record found';
                 }
                 else if(output.message = 'assetnotfoundinyouraddress'){
               
@@ -315,7 +316,7 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                     $scope.validtamper=false;
                      $scope.tagid='';
                      $scope.blockchain=true;
-                     $scope.result='blockchain record found';
+                     $scope.result='Blockchain record found';
                      $scope.d1=string1;
                      $scope.d2=string2;
                      $scope.d3=string3;
@@ -327,7 +328,7 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                         $scope.valid=true;
                         $scope.validtamper=true;
                         $scope.blockchain=false;
-                        $scope.read='blockchain record not found'
+                        $scope.read='Blockchain record not found'
                         $scope.tagid='';
                         $scope.d1=string1;
                         $scope.d2=string2;
@@ -339,7 +340,7 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                     $scope.valid=false;
                     $scope.validtamper=false;
                     $scope.blockchain=false;
-                    $scope.read='blockchain record not found';
+                    $scope.read='Blockchain record not found';
                     $scope.tagid='';
                     $scope.d1=string1;
                     $scope.d2=string2;
@@ -353,7 +354,7 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                         $scope.validtamper=false;
                          $scope.tagid='';
                          $scope.blockchain=true;
-                         $scope.result='blockchain record found';
+                         $scope.result='Blockchain record found';
                          $scope.d1=string1;
                          $scope.d2=string2;
                          $scope.d3=string3;
@@ -365,7 +366,7 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                             $scope.validtamper=false;
                              $scope.tagid='';
                              $scope.blockchain=false;
-                             $scope.read='blockchain record not found';
+                             $scope.read='Blockchain record not found';
                              $scope.d1=string1;
                              $scope.d2=string2;
                              $scope.d3=string3;
@@ -377,21 +378,16 @@ $http.post('http://34.208.159.94:8081/api/newscan',Data).then(function(response)
                          $scope.valid=false;
                          $scope.validtamper=true;
                          $scope.blockchain=false;
-                         $scope.read='blockchain record not found'
+                         $scope.read='Blockchain record not found'
                          $scope.tagid='';
                          $scope.d1=string1;
                          $scope.d2=string2;
                          $scope.d3=string3;
                         }
-                        
-                            
-                            
-                        
-                    
                     }),
                      function(error){
                 $scope.status="Network error";
-                $scope.reset();
+                $scope.resett();
              }
     
         }

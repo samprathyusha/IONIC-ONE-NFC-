@@ -113,7 +113,7 @@
             <div>
             
             <div>
-        <button class="button button-dark button-outline center button-check " ng-click="reset()"> CHECK NEXT</button>
+        <button class="button button-dark button-outline center button-check " ng-click="resett()"> CHECK NEXT</button>
     </div>
     </div>
 </div>
@@ -125,7 +125,7 @@
             <div ng-if="!dataforce">
                 <div ng-if="moving">
 
-                    <form>
+                    <form name="fenter">
                         <div class="card-login">
 
                             <div class="item item-input-inset">
@@ -206,9 +206,9 @@
             <div ng-if="dataforce">
                 <div ng-if="!tag.id">
                   
-                                <div align="center">
+                                <div class="center">
                                         <img class="nfc" src="img/nfc.gif">
-                                        <ds> SCAN A TAG </ds>
+                                        <h5> SCAN A TAG </h5>
                                     </div> 
                         
                     
@@ -244,11 +244,14 @@
                     <div ng-if="!moving">
 
                         <div ng-if="!tag.id">
-                            <div align="center">
+                            <div class="center">
                                 <img class="nfc" src="img/nfc.gif">
-                                <ds> SCAN NFC TAG </ds>
+                                <h5> SCAN NFC TAG </h5>
                             </div>
-                            <button class="button  button-dark button-outline  button-manual" ng-click="moveScreen()"> ENTER DATA MANUALLY </button>
+                            
+                                    <button class="button  button-dark button-outline  button-manual " ng-click="moveScreen()"> ENTER DATA MANUALLY </button>
+                            
+
                         </div>
 
 
@@ -286,7 +289,7 @@
                                             <p class="left">VALID PRODUCT </p>
                                         </div>
     
-                                        <button class="button button-dark button-outline center button-check " ng-click="reset()"> CHECK NEXT</button>
+                                        <button class="button button-dark button-outline center button-check " ng-click="resett()"> CHECK NEXT</button>
                                     </div>
     
     
@@ -335,7 +338,7 @@
                                         </div>
     
     
-                                        <button class="button button-dark button-outline center button-check" ng-click="reset()"> CHECK NEXT </button>
+                                        <button class="button button-dark button-outline center button-check" ng-click="resett()"> CHECK NEXT </button>
     
                                     </div>
                                 </div>
